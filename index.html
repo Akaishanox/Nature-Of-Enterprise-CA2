@@ -98,12 +98,12 @@
         }
     });
 
-// Real Scatter Plot with Regression Line
+// Scatter Plot with Regression Line (Fixed)
 const scatterChart = new Chart(document.getElementById('scatterChart'), {
-    type: 'scatter',
     data: {
         datasets: [
             {
+                type: 'scatter',
                 label: 'NA vs Global Sales',
                 data: [
                     {x: 41.49, y: 82.74},
@@ -120,14 +120,14 @@ const scatterChart = new Chart(document.getElementById('scatterChart'), {
                 backgroundColor: 'rgba(255, 99, 132, 0.6)'
             },
             {
-                label: 'Regression Line',
                 type: 'line',
+                label: 'Regression Line',
                 data: [
                     {x: 7, y: 0.0632 + 1.7918 * 7},
                     {x: 45, y: 0.0632 + 1.7918 * 45}
                 ],
-                borderColor: 'rgba(0, 0, 0, 1)',
-                borderWidth: 2,
+                borderColor: 'black',
+                borderWidth: 3,
                 fill: false,
                 pointRadius: 0
             }
@@ -137,6 +137,8 @@ const scatterChart = new Chart(document.getElementById('scatterChart'), {
         responsive: true,
         scales: {
             x: {
+                type: 'linear',
+                position: 'bottom',
                 title: {
                     display: true,
                     text: 'NA Sales (Millions)'
