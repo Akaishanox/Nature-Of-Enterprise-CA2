@@ -98,22 +98,22 @@
         }
     });
 
-    // Simple Line Representation of Regression
-    const scatterChart = new Chart(document.getElementById('scatterChart'), {
-        type: 'line',
-        data: {
-            labels: ['Low NA Sales','Medium NA Sales','High NA Sales'],
-            datasets: [{
-                label: 'Predicted Global Sales',
-                data: [0.1, 5, 20],
-                borderColor: 'rgba(255, 99, 132, 1)',
-                fill: false
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
+// Simple Line Representation of Regression
+const scatterChart = new Chart(document.getElementById('scatterChart'), {
+    type: 'line',
+    data: {
+        labels: ['Low NA Sales','Medium NA Sales','High NA Sales'],
+        datasets: [{
+            label: 'Predicted Global Sales',
+            data: [0.1, 5, 20],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            fill: false
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
 </script>
 
 </body>
