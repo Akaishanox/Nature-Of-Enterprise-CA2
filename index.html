@@ -2,71 +2,119 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Nature of Enterprise CA2 – Video Game Sales Analysis</title>
+    <title>Video Game Sales Analysis – CA2</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-    <h1>Nature of Enterprise CA2</h1>
-    <h2>Video Game Sales Analysis</h2>
+<!-- NAVIGATION -->
+<nav class="navbar navbar-expand-lg bg-body-secondary">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="#">CA2 Analysis</a>
+        <div>
+            <a class="nav-link d-inline" href="#">Overview</a>
+            <a class="nav-link d-inline" href="#">Charts</a>
+            <a class="nav-link d-inline" href="#">ML</a>
+        </div>
+    </div>
+</nav>
 
-    <p><strong>Student Name:</strong> Akaisha Gurung</p>
-    <p><strong>Module:</strong> Nature of Enterprise</p>
+<main class="container my-5">
 
-    <hr>
+    <!-- HEADER -->
+    <header class="mb-5">
+        <h1 class="display-5">Video Game Sales Analysis</h1>
+        <p class="text-muted">Nature of Enterprise – Akaisha Gurung</p>
+    </header>
 
-    <h3>Project Overview</h3>
-    <p>
-        This project analyses a video game sales dataset to explore trends across genres,
-        platforms, and regions. The aim of the project was to use real-world data to apply
-        descriptive statistics, visual analysis, and a basic machine learning approach.
-    </p>
+    <!-- PROJECT OVERVIEW -->
+    <section class="mb-5">
+        <h2>Project Overview</h2>
+        <p>
+            This project analyses a video game sales dataset containing 16,598 games.
+            The aim was to explore sales trends across genres and regions using descriptive
+            statistics, visual analysis and linear regression.
+        </p>
+    </section>
 
-    <h3>Dataset Used</h3>
-    <p>
-        The dataset was sourced from Kaggle and contains information on over 16,000 video games.
-        It includes details such as game name, platform, year of release, genre, publisher,
-        and sales figures for North America, Europe, Japan, and global sales.
-    </p>
+    <!-- GENRE CHART -->
+    <section class="mb-5">
+        <h2>Total Global Sales by Genre</h2>
+        <canvas id="genreChart"></canvas>
+    </section>
 
-    <p>
-        Dataset link:
-        <a href="https://www.kaggle.com/datasets/gregorut/videogamesales" target="_blank">
-            Video Game Sales Dataset (Kaggle)
-        </a>
-    </p>
+    <!-- SCATTER / ML -->
+    <section class="mb-5">
+        <h2>NA Sales vs Global Sales</h2>
+        <canvas id="scatterChart"></canvas>
 
-    <h3>Data Analysis</h3>
-    <p>
-        The data was analysed using Excel. Descriptive statistics were calculated to understand
-        the distribution of global sales. Missing values were checked and found to be minimal,
-        meaning the dataset required very little cleaning.
-    </p>
+        <article class="mt-4 p-3 bg-light rounded">
+            <h4>Linear Regression Model</h4>
+            <p>
+                Global_Sales = 0.0632 + 1.7918 × NA_Sales <br>
+                R² = 0.8856
+            </p>
+            <p>
+                The high R² value shows a strong relationship between North American
+                sales and global sales, meaning NA sales are a strong predictor of
+                overall performance.
+            </p>
+        </article>
+    </section>
 
-    <h3>Visual Analysis</h3>
-    <ul>
-        <li>Total Global Sales by Genre</li>
-        <li>NA Sales vs Global Sales (scatter plot)</li>
-        <li>Number of Games per Platform</li>
-    </ul>
+    <!-- DATASET SOURCE -->
+    <section>
+        <h2>Dataset Source</h2>
+        <p>
+            Kaggle Dataset:
+            <a href="https://www.kaggle.com/datasets/gregorut/videogamesales" target="_blank">
+                Video Game Sales Dataset
+            </a>
+        </p>
+    </section>
 
-    <p>
-        These charts helped identify patterns in sales performance and highlighted the importance
-        of certain genres, platforms, and regions.
-    </p>
+</main>
 
-    <h3>Machine Learning</h3>
-    <p>
-        A simple linear regression model was used to explore whether global sales could be predicted
-        using North American sales. The results showed a clear positive relationship, supporting
-        the findings from the visual analysis.
-    </p>
+<script>
+    // Genre Bar Chart
+    const genreChart = new Chart(document.getElementById('genreChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Action','Sports','Shooter','Role Playing','Platform','Misc','Racing','Fighting','Simulation','Puzzle','Adventure','Strategy'],
+            datasets: [{
+                label: 'Total Global Sales (Millions)',
+                data: [1751.18,1330.93,1037.37,927.37,831.37,809.96,732.04,448.91,392.2,244.95,239.04,175.12],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)'
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
 
-    <h3>Conclusion</h3>
-    <p>
-        This project demonstrated how data analysis and basic machine learning can be applied to
-        real-world datasets. The findings provided useful insights into the video game industry
-        while meeting all requirements of the CA2 project.
-    </p>
+    // Simple Line Representation of Regression
+    const scatterChart = new Chart(document.getElementById('scatterChart'), {
+        type: 'line',
+        data: {
+            labels: ['Low NA Sales','Medium NA Sales','High NA Sales'],
+            datasets: [{
+                label: 'Predicted Global Sales',
+                data: [0.1, 5, 20],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
 
 </body>
 </html>
