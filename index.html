@@ -98,20 +98,43 @@
         }
     });
 
-// Simple Line Representation of Regression
+// Real Scatter Plot: NA Sales vs Global Sales
 const scatterChart = new Chart(document.getElementById('scatterChart'), {
-    type: 'line',
+    type: 'scatter',
     data: {
-        labels: ['Low NA Sales','Medium NA Sales','High NA Sales'],
         datasets: [{
-            label: 'Predicted Global Sales',
-            data: [0.1, 5, 20],
-            borderColor: 'rgba(255, 99, 132, 1)',
-            fill: false
+            label: 'NA vs Global Sales',
+            data: [
+                {x: 41.49, y: 82.74},
+                {x: 29.08, y: 40.24},
+                {x: 15.85, y: 35.82},
+                {x: 15.75, y: 33},
+                {x: 11.27, y: 31.37},
+                {x: 23.2, y: 30.26},
+                {x: 11.38, y: 30.01},
+                {x: 14.03, y: 29.02},
+                {x: 14.59, y: 28.62},
+                {x: 26.93, y: 28.31}
+            ],
+            backgroundColor: 'rgba(255, 99, 132, 0.6)'
         }]
     },
     options: {
-        responsive: true
+        responsive: true,
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'NA Sales (Millions)'
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Global Sales (Millions)'
+                }
+            }
+        }
     }
 });
 </script>
