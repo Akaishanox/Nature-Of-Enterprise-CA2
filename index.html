@@ -98,26 +98,40 @@
         }
     });
 
-// Real Scatter Plot: NA Sales vs Global Sales
+// Real Scatter Plot with Regression Line
 const scatterChart = new Chart(document.getElementById('scatterChart'), {
     type: 'scatter',
     data: {
-        datasets: [{
-            label: 'NA vs Global Sales',
-            data: [
-                {x: 41.49, y: 82.74},
-                {x: 29.08, y: 40.24},
-                {x: 15.85, y: 35.82},
-                {x: 15.75, y: 33},
-                {x: 11.27, y: 31.37},
-                {x: 23.2, y: 30.26},
-                {x: 11.38, y: 30.01},
-                {x: 14.03, y: 29.02},
-                {x: 14.59, y: 28.62},
-                {x: 26.93, y: 28.31}
-            ],
-            backgroundColor: 'rgba(255, 99, 132, 0.6)'
-        }]
+        datasets: [
+            {
+                label: 'NA vs Global Sales',
+                data: [
+                    {x: 41.49, y: 82.74},
+                    {x: 29.08, y: 40.24},
+                    {x: 15.85, y: 35.82},
+                    {x: 15.75, y: 33},
+                    {x: 11.27, y: 31.37},
+                    {x: 23.2, y: 30.26},
+                    {x: 11.38, y: 30.01},
+                    {x: 14.03, y: 29.02},
+                    {x: 14.59, y: 28.62},
+                    {x: 26.93, y: 28.31}
+                ],
+                backgroundColor: 'rgba(255, 99, 132, 0.6)'
+            },
+            {
+                label: 'Regression Line',
+                type: 'line',
+                data: [
+                    {x: 7, y: 0.0632 + 1.7918 * 7},
+                    {x: 45, y: 0.0632 + 1.7918 * 45}
+                ],
+                borderColor: 'rgba(0, 0, 0, 1)',
+                borderWidth: 2,
+                fill: false,
+                pointRadius: 0
+            }
+        ]
     },
     options: {
         responsive: true,
